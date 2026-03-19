@@ -77,7 +77,7 @@ The GNSS processing program was designed to automate as many steps as possible, 
 		
 5. Output window
    This window displays text messages to provide updates about the processing steps of the program. Scrolling with a mouse will not currently work in the output window, so please use the scroll bar on the side. 
-   *Most outputs, including errors, should show up here. It is recommended to keep an eye on the Python IDE or Command Prompt for additional error messages. *
+   *Most outputs, including errors, should show up here. It is recommended to keep an eye on the Python IDE or Command Prompt for additional error messages.*
 
 
 ## Outputs
