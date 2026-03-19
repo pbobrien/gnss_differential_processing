@@ -3,7 +3,7 @@
 This repository contains scripts and tools that perform post-processing kinematic (PPK) differential corrections on GNSS data collected using a base station and rover. The processing script was originally designed to work with Hi-Target antennae, but alterations can be made to work with any RINEX file containing markers within the rover RINEX files. 
 
 ## Dependencies 
-This software makes use of the Python programming language and was built on Python 3.13.5. Additional package requirements can be found in the requirements.txt file. 
+This software makes use of the Python programming language and was built on Python 3.13.5. Additional package requirements can be found in the requirements.txt file (*not yet provided*). 
 
 In order to run the differential correction and optional base station positioning, the [RTKLIB](https://github.com/tomojitakasu/RTKLIB)software must be installed. Ensure that the folder containing all of the RTKLIB information is placed in the same folder as the Python script. It can be placed in a different location, but the path will need to be entered manually before starting the processing. 
 
