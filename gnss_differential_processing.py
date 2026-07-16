@@ -798,14 +798,20 @@ def longrun_task():
 
                 mark_df = pd.DataFrame({"time": [], "name": [], "pos": [], "ant_del": []})
                 
-                for fname in rov_files:
-                    if ("p" in fname) or ("nav" in fname):
-                        rov_nav_list.append(root+"\\"+fname)
+                # Appends ".nav" (or ".XXp") and ".obs" (or ".XXo") files to a list, respectively
+                rov_nav_list = [fname for fname in rov_files if "p" in fname or "nav" in fname]
+                rov_obs_list = [fname for fname in rov_files if "o" in fname or "obs" in fname]
 
-                i = 0
-                while i < rov_file_len:
-                    rov_obs = rov_files[i]
-                    rov_nav = rov_files[i+1]
+                # Pairs up matching ".nav" and ".obs" files
+                # Requires no changes to the file names (dependent on regex)
+                rov_nav_obs_pairs = [[i, j] for i in rov_nav_list for j in rov_obs_list if re.search(r'(\d+)', j)[0] in i]
+
+                # Loops through each pair to process each file
+                for pair in rov_nav_obs_pairs:
+
+                    # Sets variable names
+                    rov_obs = pair[1]
+                    rov_nav = pair[0]
 
                     rov_obs_path, rov_nav_path = file_type_convert(root, [rov_obs,rov_nav])
 
@@ -823,10 +829,7 @@ def longrun_task():
 
 
                     #conv_points = pos_process(pos_out_path)
-
-                    #write_pos_csv(conv_points, pos_out_path)
-
-                    i += 2                
+                    #write_pos_csv(conv_points, pos_out_path)              
                     
                 conv_points = pos_process(pos_out_path, mark_df)
 
